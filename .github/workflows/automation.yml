@@ -29,13 +29,12 @@ jobs:
           # Instalar Firefox y un servidor X virtual (xvfb) para Selenium GUI en modo "headless"
           sudo apt-get install -y firefox xvfb
 
-      # 4) Instalar dependencias de Python (Selenium, webdriver_manager, etc.)
+      # 4) Instalar dependencias de Python
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
-          # Si tienes un requirements.txt con todo (selenium, webdriver_manager, python-dotenv, etc.)
+          # Ajusta tu requirements.txt
           pip install -r requirements.txt
-
 
       # 5) Configurar variables de entorno 
       - name: Set environment
@@ -46,7 +45,7 @@ jobs:
           SIGO_USER: ${{ secrets.SIGO_USER }}
           SIGO_PASS: ${{ secrets.SIGO_PASS }}
 
-      # 6) Ejecutar el script maestro (con xvfb-run para simular entorno gráfico)
+      # 6) Ejecutar el script maestro
       - name: Run script maestro
         run: python script_maestro.py
         env:
@@ -54,5 +53,12 @@ jobs:
           PREVIRED_PASS: ${{ secrets.PREVIRED_PASS }}
           SIGO_USER: ${{ secrets.SIGO_USER }}
           SIGO_PASS: ${{ secrets.SIGO_PASS }}
+
+      # 7) Subir logs como artifact
+      - name: Subir logs como artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: logs
+          path: "*.log"
 
 
