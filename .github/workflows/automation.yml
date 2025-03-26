@@ -3,7 +3,7 @@ name: Automated Previred Scripts
 on:
   schedule:
     # Lunes (1) a viernes (5), a las 14:30 UTC
-    - cron: "00 8 * * 1-5"
+    - cron: "00 18 * * 1-5"
   # Opcional: permitir ejecución manual:
   workflow_dispatch:
 
