@@ -9,7 +9,8 @@ previred_pass = os.environ["PREVIRED_PASS"]
 sigo_user = os.environ["SIGO_USER"]
 sigo_pass = os.environ["SIGO_PASS"]
 
-descarga_dir = "/home/matias/Previred/descarga"
+descarga_dir = "descarga"
+os.makedirs(descarga_dir, exist_ok=True)
 
 LOG_FILE = "automatizacion.log"
 logging.basicConfig(
