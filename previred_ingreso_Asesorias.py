@@ -79,6 +79,7 @@ def main():
     profile.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/pdf,application/octet-stream")
 
     firefox_options = FirefoxOptions()
+    firefox_options.add_argument("--headless")
     firefox_options.profile = profile
     firefox_options.set_preference("dom.webdriver.enabled", False)
     firefox_options.set_preference("useAutomationExtension", False)

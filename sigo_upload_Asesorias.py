@@ -10,7 +10,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.edge.service import Service as EdgeService
-
+from selenium.webdriver.edge.options import Options as EdgeOptions
 # Para esperas explícitas
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -32,7 +32,9 @@ def main():
     
     # Iniciar Edge con webdriver_manager
     edge_service = EdgeService(EdgeChromiumDriverManager().install())
-    driver = webdriver.Edge(service=edge_service)
+    edge_options = EdgeOptions()
+    edge_options.add_argument("--headless")
+    driver = webdriver.Edge(service=edge_service, options=edge_options)
     
     try:
         # 1. Acceder a SIGO y maximizar

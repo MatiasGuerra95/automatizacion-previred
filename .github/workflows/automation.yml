@@ -49,6 +49,6 @@ jobs:
 
       # 6) Ejecutar el script maestro (con xvfb-run para simular entorno gráfico)
       - name: Run script maestro
-        run: xvfb-run -a python script_maestro.py
+        run: python script_maestro.py
 
 
