@@ -56,7 +56,7 @@ jobs:
 
       # 7) Subir logs como artifact
       - name: Subir logs como artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: logs
           path: "*.log"
