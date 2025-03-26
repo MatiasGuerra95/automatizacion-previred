@@ -4,6 +4,11 @@ import logging
 import datetime
 import shutil
 
+previred_user = os.environ["PREVIRED_USER"]
+previred_pass = os.environ["PREVIRED_PASS"]
+sigo_user = os.environ["SIGO_USER"]
+sigo_pass = os.environ["SIGO_PASS"]
+
 descarga_dir = "/home/matias/Previred/descarga"
 
 LOG_FILE = "/home/matias/Previred/automatizacion.log"
