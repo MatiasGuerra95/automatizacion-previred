@@ -50,5 +50,10 @@ jobs:
       # 6) Ejecutar el script maestro (con xvfb-run para simular entorno gráfico)
       - name: Run script maestro
         run: python script_maestro.py
+        env:
+          PREVIRED_USER: ${{ secrets.PREVIRED_USER }}
+          PREVIRED_PASS: ${{ secrets.PREVIRED_PASS }}
+          SIGO_USER: ${{ secrets.SIGO_USER }}
+          SIGO_PASS: ${{ secrets.SIGO_PASS }}
 
 
