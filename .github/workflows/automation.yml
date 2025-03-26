@@ -34,9 +34,8 @@ jobs:
         run: |
           pip install --upgrade pip
           # Si tienes un requirements.txt con todo (selenium, webdriver_manager, python-dotenv, etc.)
-          # pip install -r requirements.txt
-          # O puedes instalar directamente (ejemplo):
-          pip install selenium webdriver-manager python-dotenv
+          pip install -r requirements.txt
+
 
       # 5) Configurar variables de entorno 
       - name: Set environment
