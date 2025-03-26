@@ -11,7 +11,7 @@ sigo_pass = os.environ["SIGO_PASS"]
 
 descarga_dir = "/home/matias/Previred/descarga"
 
-LOG_FILE = "/home/matias/Previred/automatizacion.log"
+LOG_FILE = "automatizacion.log"
 logging.basicConfig(
     filename=LOG_FILE,
     filemode="a",
