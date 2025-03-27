@@ -33,7 +33,7 @@ def main():
     # Iniciar Edge con webdriver_manager
     edge_service = EdgeService(EdgeChromiumDriverManager().install())
     edge_options = EdgeOptions()
-    edge_options.add_argument("--headless")
+    #edge_options.add_argument("--headless")
     driver = webdriver.Edge(service=edge_service, options=edge_options)
     
     try:
@@ -60,8 +60,7 @@ def main():
         # ================================
         # SECCIÓN: SUBIR ARCHIVOS A SIGO
         # ================================
-        descarga_dir = "descarga"
-        os.makedirs(descarga_dir, exist_ok=True) # Carpeta donde se encuentran los PDFs
+        descarga_dir = "/home/matias/Previred/descarga"  # Carpeta donde se encuentran los PDFs
         registros_file = "finiquitos_filtrados_EST.json"
         
         with open(registros_file, "r", encoding="utf-8") as f:
