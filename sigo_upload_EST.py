@@ -33,7 +33,7 @@ def main():
     # Iniciar Edge con webdriver_manager
     edge_service = EdgeService(EdgeChromiumDriverManager().install())
     edge_options = EdgeOptions()
-    #edge_options.add_argument("--headless")
+    edge_options.add_argument("--headless")
     driver = webdriver.Edge(service=edge_service, options=edge_options)
     
     try:
