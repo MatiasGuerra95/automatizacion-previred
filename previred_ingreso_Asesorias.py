@@ -68,8 +68,8 @@ def main():
 
     # 2) Configurar Firefox para descargas automáticas de PDF
     profile = FirefoxProfile()
-    descarga_dir = "descarga"
-    os.makedirs(descarga_dir, exist_ok=True)
+    descarga_dir = os.path.join(os.getcwd(), "descarga")
+    os.makedirs(descarga_dir, exist_ok=True)  # Carpeta donde se encuentran los PDFs
 
     profile.set_preference("browser.download.folderList", 2)
     profile.set_preference("browser.download.dir", descarga_dir)

@@ -61,7 +61,8 @@ def main():
         # ================================
         # SECCIÓN: SUBIR ARCHIVOS A SIGO
         # ================================
-        descarga_dir = "descarga"  # Carpeta donde se encuentran los PDFs
+        descarga_dir = os.path.join(os.getcwd(), "descarga")
+        os.makedirs(descarga_dir, exist_ok=True)  # Carpeta donde se encuentran los PDFs
         registros_file = "finiquitos_filtrados_EST.json"
         
         with open(registros_file, "r", encoding="utf-8") as f:

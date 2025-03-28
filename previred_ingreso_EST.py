@@ -22,7 +22,7 @@ LOG_FILE = "automatizacion.log"
 logging.basicConfig(
     filename=LOG_FILE,
     filemode="a",
-    level=logging.DEBUG,  # Nivel DEBUG para ver todos los mensajes
+    level=logging.INFO,  # Nivel DEBUG para ver todos los mensajes
     format="%(asctime)s [%(levelname)s] %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S"
 )
@@ -81,8 +81,8 @@ def seleccionar_fecha_jquery_ui(driver, fecha_str):
 def configurar_firefox():
     try:
         profile = FirefoxProfile()
-        descarga_dir = "descarga"
-        os.makedirs(descarga_dir, exist_ok=True)
+        descarga_dir = os.path.join(os.getcwd(), "descarga")
+        os.makedirs(descarga_dir, exist_ok=True)  # Carpeta donde se encuentran los PDFs
         logging.debug(f"Directorio de descargas configurado: {descarga_dir}")
 
         profile.set_preference("browser.download.folderList", 2)
