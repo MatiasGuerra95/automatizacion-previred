@@ -84,7 +84,7 @@ def main():
     firefox_options.set_preference("dom.webdriver.enabled", False)
     firefox_options.set_preference("useAutomationExtension", False)
 
-    service = FirefoxService(GeckoDriverManager().install())
+    service = FirefoxService(GeckoDriverManager().install(), timeout=300)
     driver = webdriver.Firefox(service=service, options=firefox_options)
 
     try:
