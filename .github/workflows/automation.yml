@@ -1,8 +1,9 @@
 name: Automated Previred Scripts
 
 on:
+  # Verifica que el cron programado se ajuste a tu zona horaria
   schedule:
-    - cron: "0 5 * * 1-5"  # Lunes a viernes, 14:30 UTC (-3 Chile)
+    - cron: "0 5 * * 1-5"  # Se ejecuta a las 05:00 UTC (ajusta si es necesario)
   workflow_dispatch:
 
 jobs:
@@ -18,21 +19,26 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb firefox curl
-
-          # Instalar Microsoft Edge
+          sudo apt-get install -y xvfb firefox curl microsoft-edge-stable
+          # Instalar Microsoft Edge (si no lo instala el paquete anterior, se puede usar)
           curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
           sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
           sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
           sudo apt-get update
-          sudo apt-get install -y microsoft-edge-stable
-
           # Instalar Geckodriver
           wget https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux64.tar.gz
-          tar -xvzf geckodriver*
+          tar -xvzf geckodriver-v0.34.0-linux64.tar.gz
           sudo mv geckodriver /usr/local/bin/
 
       - name: Install Python dependencies
@@ -41,6 +47,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run script maestro
+        # Se ejecuta con xvfb-run para simular un entorno gráfico en CI
         run: xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" python script_maestro.py
         env:
           PREVIRED_USER: ${{ secrets.PREVIRED_USER }}
