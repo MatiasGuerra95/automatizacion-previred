@@ -16,7 +16,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # Configuración de logging
-LOG_FILE = "sigo_finiquitos.log"
+LOG_FILE = "automatizacion.log"
 logging.basicConfig(
     filename=LOG_FILE,
     filemode="a",

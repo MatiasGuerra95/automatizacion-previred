@@ -17,7 +17,7 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 
-LOG_FILE = "previred_mov_personal.log"
+LOG_FILE = "automatizacion.log"
 logging.basicConfig(
     filename=LOG_FILE,
     filemode="a",

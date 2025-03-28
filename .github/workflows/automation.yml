@@ -47,7 +47,7 @@ jobs:
 
       # 6) Ejecutar el script maestro
       - name: Run script maestro
-        run: python script_maestro.py
+        run: xvfb-run python script_maestro.py
         env:
           PREVIRED_USER: ${{ secrets.PREVIRED_USER }}
           PREVIRED_PASS: ${{ secrets.PREVIRED_PASS }}
